@@ -1,4 +1,4 @@
-== Low Poly Animate ==
+== Low Poly Animate
 
 Low Poly Animate is Rails + JS app that will allow users to upload an image and generate low poly svg from it.
 
