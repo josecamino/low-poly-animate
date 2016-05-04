@@ -1,28 +1,7 @@
-== README
+== Low Poly Animate ==
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Low Poly Animate is Rails + JS app that will allow users to upload an image and generate low poly svg from it.
 
-Things you may want to cover:
+The svg can also be animated using a variety of settings.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The idea is to allow users to download the generated code for use on their html based web apps.
