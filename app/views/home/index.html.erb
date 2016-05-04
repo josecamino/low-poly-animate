@@ -1,56 +1,92 @@
+<h3>Pick an Image:</h3>
+<div id="image-picker">
+  <a href="#"><img height="100" src="<%= asset_path('horse.jpg') %>" alt="" class="image selected"/></a>
+  <a href="#"><img height="100" src="<%= asset_path('lincoln.jpg') %>" alt="" class="image"/></a>
+  <a href="#"><img height="100" src="<%= asset_path('landscape.jpg') %>" alt="" class="image"/></a>
+  <a href="#"><img height="100" src="<%= asset_path('sunflower.jpg') %>" alt="" class="image"/></a>
+</div>
+
+<br>
+
+<h3>Result:</h3>
+
 <div id="low-poly-img"></div>
 
 <br>
 
-<form id="form-animate">
-  <label for="speed">Speed</label>
-    <input id="speed" name="speed" type="range" min="0.1" max="10" step="0.1" value="2.5" onchange="updateDisplayedValue(this)">
-    <span id="speed-value"></span>
-    <br>
-    <label for="stagger">Stagger</label>
-      <input id="stagger" name="stagger" type="range" min="0.001" max="0.025" step="0.001" value="0.005" onchange="updateDisplayedValue(this)">
-      <span id="stagger-value"></span>
-    <br>
-    <label for="start-delay">Start Delay</label>
-      <input id="start-delay" name="start-delay" type="range" min="0" max="10" step="1" value="0" onchange="updateDisplayedValue(this)">
-      <span id="start-delay-value"></span>
-      <br>
-      <label for="repeat">Repeat</label>
-      <input id="repeat" name="repeat" type="checkbox">
-      <br>
-      <label for="yoyo">Yoyo</label>
-      <input id="yoyo" name="yoyo" type="checkbox" disabled>
-    <br>
-    <label for="repeat-delay">Repeat Delay</label>
-      <input id="repeat-delay" name="repeat-delay" type="range" min="0" max="20" step="1" value="5" onchange="updateDisplayedValue(this)" disabled>
-      <span id="repeat-delay-value"></span>
-      <br><br>
-      <label for="ease">Ease</label>
-      <select id="ease" name="ease">
-        <option value="Back">Back</option>
-        <option value="Bounce">Bounce</option>
-        <option value="Circ">Circ</option>
-        <option value="Cubic">Cubic</option>
-        <option value="Ease" selected>Ease</option>
-        <option value="EaseLookup">EaseLookup</option>
-        <option value="Elastic">Elastic</option>
-        <option value="Expo">Expo</option>
-        <option value="Linear">Linear</option>
-        <option value="Power0">Power0</option>
-        <option value="Power1">Power1</option>
-        <option value="Power2">Power2</option>
-        <option value="Power3">Power3</option>
-        <option value="Power4">Power4</option>
-        <option value="Quad">Quad</option>
-        <option value="Quart">Quart</option>
-        <option value="Quint">Quint</option>
-        <option value="RoughEase">RoughEase</option>
-        <option value="Sine">Sine</option>
-        <option value="SlowMo">SlowMo</option>
-        <option value="SteppedEase">SteppedEase</option>
-        <option value="Strong">Strong</option>
-      </select>
+<div class="jumbotron">
+  <form id="form-animate">
+    <div class="row">
+      <div class="col-sm-4">
+        <label for="speed">Speed</label>
+        <input id="speed" name="speed" type="range" min="0.1" max="10" step="0.1" value="2.5" onchange="updateDisplayedValue(this)">
+        <span id="speed-value"></span>
+      </div>
+      <div class="col-sm-4">
+        <label for="stagger">Stagger</label>
+        <input id="stagger" name="stagger" type="range" min="0.001" max="0.025" step="0.001" value="0.005" onchange="updateDisplayedValue(this)">
+        <span id="stagger-value"></span>
+      </div>
+      <div class="col-sm-4">
+        <label for="start-delay">Start Delay</label>
+        <input id="start-delay" name="start-delay" type="range" min="0" max="10" step="1" value="0" onchange="updateDisplayedValue(this)">
+        <span id="start-delay-value"></span>
+      </div>
+    </div>
+    <hr style="border-color: #ccc">
+    <div class="row">
+      <div class="col-sm-4">
+        <label for="repeat">Repeat</label>
+        <input id="repeat" name="repeat" type="checkbox">
+      </div>
+      <div class="col-sm-4">
+        <label for="yoyo">Yoyo</label>
+        <input id="yoyo" name="yoyo" type="checkbox" disabled>
+      </div>
+      <div class="col-sm-4">
+        <label for="repeat-delay">Repeat Delay</label>
+        <input id="repeat-delay" name="repeat-delay" type="range" min="0" max="20" step="1" value="5" onchange="updateDisplayedValue(this)" disabled>
+        <span id="repeat-delay-value"></span>
+      </div>
+    </div>
+    <hr style="border-color: #ccc">
+    <div class="row">
+      <div class="col-sm-4">
+        <label for="ease">Ease</label>
+        <select id="ease" name="ease">
+          <option value="Back">Back</option>
+          <option value="Bounce">Bounce</option>
+          <option value="Circ">Circ</option>
+          <option value="Cubic">Cubic</option>
+          <option value="Ease" selected>Ease</option>
+          <option value="EaseLookup">EaseLookup</option>
+          <option value="Elastic">Elastic</option>
+          <option value="Expo">Expo</option>
+          <option value="Linear">Linear</option>
+          <option value="Power0">Power0</option>
+          <option value="Power1">Power1</option>
+          <option value="Power2">Power2</option>
+          <option value="Power3">Power3</option>
+          <option value="Power4">Power4</option>
+          <option value="Quad">Quad</option>
+          <option value="Quart">Quart</option>
+          <option value="Quint">Quint</option>
+          <option value="RoughEase">RoughEase</option>
+          <option value="Sine">Sine</option>
+          <option value="SlowMo">SlowMo</option>
+          <option value="SteppedEase">SteppedEase</option>
+          <option value="Strong">Strong</option>
+        </select>
+      </div>
+    </div>
+    <hr style="border-color: #ccc">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <button id="btn-animate" class="btn btn-primary">Animate</button>
+      </div>
+    </div>
+  </form>
+</div>
 
-    <br><br>
-    <button id="btn-animate">Animate</button>
-</form>
+
+<br><br>

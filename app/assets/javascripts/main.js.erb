@@ -16,10 +16,9 @@ function generateLowPolyImg() {
 	// image.src = 'images/lincoln.jpg';
 	// image.src = 'images/logo.jpg';
 	// image.src = 'images/landscape.jpg';
-	image.src = "<%= asset_path('horse.jpg') %>";
+	image.src = $('#image-picker .selected').attr('src');
 	// image.src = 'images/sunflower.jpg';
 }
-
 
 function generateAnimation() {
 
@@ -98,6 +97,13 @@ $(document).ready(function() {
 	generateLowPolyImg();
 	generateAnimation();
 	updateAllDisplayedValues();
+
+	$('#image-picker .image').click(function(){
+		console.log("clicked");
+		$('#image-picker .image').removeClass('selected');
+		$(this).addClass('selected');
+		generateLowPolyImg();
+	});
 
 	$('#repeat').click(function(){
 		if(this.checked) {
