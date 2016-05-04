@@ -1,0 +1,114 @@
+
+function generateLowPolyImg() {
+
+	var params = { blur: 5, vertexCount: 600, accuracy: 1, threshold: 50 };
+	var image = new Image();
+
+	image.onload = function () {
+	    triangulate(params)
+	        .fromImage(image)
+	        .toSVG()
+	        .then( function( svgMarkup ) {
+	            document.getElementById("low-poly-img").innerHTML = svgMarkup;
+	        } );
+	};
+
+	// image.src = 'images/lincoln.jpg';
+	// image.src = 'images/logo.jpg';
+	// image.src = 'images/landscape.jpg';
+	image.src = "<%= asset_path('horse.jpg') %>";
+	// image.src = 'images/sunflower.jpg';
+}
+
+
+function generateAnimation() {
+
+	$('#btn-animate').click(function(e){
+
+		e.preventDefault();
+
+		var animation_duration = $('#speed').val();
+		var stagger_value = $('#stagger').val();
+		var start_delay = $('#start-delay').val();
+		var repeat_delay = $('#repeat-delay').val();
+		var repeat = 0;
+		if(document.getElementById('repeat').checked) {
+		    repeat = -1;
+		}
+		var yoyo = document.getElementById('yoyo').checked;
+		var ease_value = $('#ease').val();
+		ease = eval("(" + ease_value + ")");
+
+
+		var svg = $("#low-poly-img svg").html();
+
+		$("#low-poly-img svg").html("<g>" + svg + "</g>");
+
+		var tmax_tl = new TimelineMax({
+		   delay: start_delay,
+		   repeat: repeat,
+		   repeatDelay: parseInt(repeat_delay),
+		   yoyo: yoyo
+		 }),
+
+		 svg_shapes  = $('g > polygon'),
+		 stagger_val = stagger_value,
+		 duration    = animation_duration,
+
+
+
+		 stagger_opts_from = {
+		   css: {
+		   	opacity: 0, scale: 0, transformOrigin: 'center center'
+		   },
+		   ease: ease.easeInOut
+		 },
+
+		 stagger_opts_to = {
+		   css: {
+		   	opacity: 1, scale: 1
+		   },
+		   ease: ease.easeInOut
+		 };
+
+		tmax_tl.staggerFromTo(
+		   svg_shapes,
+		   duration,
+		   stagger_opts_from,
+		   stagger_opts_to,
+		   stagger_val,
+		   0
+		);
+	});
+}
+
+function updateDisplayedValue(element) {
+	var id = $(element).attr('id');
+	$('#'+id+'-value').html($(element).val()+' s');
+}
+
+function updateAllDisplayedValues() {
+	$('#form-animate input').each(function(){
+		updateDisplayedValue(this);
+	});
+}
+
+$(document).ready(function() {
+
+	generateLowPolyImg();
+	generateAnimation();
+	updateAllDisplayedValues();
+
+	$('#repeat').click(function(){
+		if(this.checked) {
+		    $('#yoyo').attr("disabled", false);
+		    $('#repeat-delay').attr("disabled", false);
+		}
+		else {
+			$('#yoyo').attr("disabled", true);
+			$('#repeat-delay').attr("disabled", true);
+		}
+	});
+
+
+});

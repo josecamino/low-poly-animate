@@ -16,3 +16,5 @@
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require_tree .
+//= require triangulate-image/dist/triangulate-image.min
+//= require greensock-js/TweenMax.min
