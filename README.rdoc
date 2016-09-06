@@ -5,3 +5,5 @@ Low Poly Animate is Rails + JS app that will allow users to upload an image and 
 The svg can also be animated using a variety of settings.
 
 The idea is to allow users to download the generated code for use on their html based web apps.
+
+https://low-poly-animate.herokuapp.com/
