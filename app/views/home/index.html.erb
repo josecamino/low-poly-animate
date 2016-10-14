@@ -1,9 +1,20 @@
-<h3>Pick an Image:</h3>
+<!-- <h3>Pick an Image:</h3>
 <div id="image-picker">
   <a href="#"><img height="100" src="<%= asset_path('horse.jpg') %>" alt="" class="image selected"/></a>
   <a href="#"><img height="100" src="<%= asset_path('lincoln.jpg') %>" alt="" class="image"/></a>
   <a href="#"><img height="100" src="<%= asset_path('landscape.jpg') %>" alt="" class="image"/></a>
   <a href="#"><img height="100" src="<%= asset_path('sunflower.jpg') %>" alt="" class="image"/></a>
+</div> -->
+
+<h3>Upload an image</h3>
+<div id="image-uploader">
+    <%= form_tag({action: :upload, controller: :images}, multipart: true) do %>
+      <%= file_field_tag 'picture' %>
+      <button type="submit" id="btn-upload" class="btn btn-primary">Upload</button>
+    <% end %>
+</div>
+
+<div id="image-picker">
 </div>
 
 <br>
